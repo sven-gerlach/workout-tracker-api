@@ -135,6 +135,10 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+router.get('/users/:id', requireToken, (req, res, next) => {
+  res.status(200).send(req.user)
+})
+
 // todo: remove this before deployment
 router.get('/users', (req, res, next) => {
   User.find()
