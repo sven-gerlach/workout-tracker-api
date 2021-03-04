@@ -78,6 +78,7 @@ router.post('/sign-in', (req, res, next) => {
       if (correctPassword) {
         // the token will be a 16 byte random hex string
         const token = crypto.randomBytes(16).toString('hex')
+        // todo: remove tokens if the user closes the app
         user.token = token
         // save the token to the DB as a property on user
         return user.save()
@@ -143,6 +144,22 @@ router.get('/users/:id', requireToken, (req, res, next) => {
 router.get('/users', (req, res, next) => {
   User.find()
     .then(users => res.status(200).json(users))
+    .catch(next)
+})
+
+router.patch('/users/:id', requireToken, (req, res, next) => {
+  const userData = req.body.user
+  User.findById(req.user.id)
+    .then(user => {
+      for (const fieldName in userData) {
+        if (userData[fieldName] === "") continue
+        user[fieldName] = userData[fieldName]
+      }
+      return user.save()
+    })
+    .then(user => {
+      res.status(200).json(user)
+    })
     .catch(next)
 })
 

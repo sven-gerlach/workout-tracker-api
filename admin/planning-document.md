@@ -63,6 +63,7 @@ POST | /sign-up | credentials | empty | 201, Created | user obj
 POST | /sign-in | credentials | empty | 200, OK | user obj w/token
 DELETE | /sign-out | empty | token | 201. Created | empty
 PATCH | /change-password | passwords | token | 204, No Content |user obj w/token
+GET | /users/:id | n/a | token | 200, OK | user obj w/token
 
 #### Workouts
 

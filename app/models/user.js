@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
   },
   experience: {
     type: String,
-    enum: ['Pro', 'Experienced', 'Amateur', 'Rookie']
+    enum: ['Pro', 'Experienced', 'Amateur', 'Rookie', '']
   }
 }, {
   timestamps: true,
