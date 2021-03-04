@@ -49,6 +49,9 @@ app.use(auth)
 // JS objects before they reach the route files.
 // The method `.use` sets up middleware for the Express application
 app.use(express.json())
+
+app.set('json spaces', 2)
+
 // this parses requests sent by `$.ajax`, which use a different content type
 app.use(express.urlencoded({ extended: true }))
 
