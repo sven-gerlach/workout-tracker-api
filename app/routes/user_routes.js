@@ -136,20 +136,20 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-router.get('/users/:id', requireToken, (req, res, next) => {
+router.get('/users', requireToken, (req, res, next) => {
   res.status(200).send(req.user)
 })
 
 // todo: remove this before deployment
-router.get('/users', (req, res, next) => {
+router.get('/users/all', (req, res, next) => {
   User.find()
     .then(users => res.status(200).json(users))
     .catch(next)
 })
 
-router.patch('/users/:id', requireToken, (req, res, next) => {
+router.patch('/users', requireToken, (req, res, next) => {
   const userData = req.body.user
-  User.findById(req.user.id)
+  User.findById(req.user._id)
     .then(user => {
       for (const fieldName in userData) {
         if (userData[fieldName] === "") continue

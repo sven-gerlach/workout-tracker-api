@@ -1,8 +1,7 @@
 const express = require('express')
 const passport = require('passport')
 
-// pull in Mongoose model for examples
-const Example = require('../models/workout')
+const Workout = require('../models/workout')
 
 // this is a collection of methods that help us detect situations when we need
 // to throw a custom error
@@ -28,13 +27,13 @@ const router = express.Router()
 
 // CREATE
 router.post('/workouts', requireToken, (req, res, next) => {
-  // set owner of new example to be current user
+  // set owner of new workout to be current user
   req.body.workout.owner = req.user.id
 
-  Example.create(req.body.workout)
-    // respond to successful `create` with status 201 and JSON of new "example"
-    .then(example => {
-      res.status(201).json({ example: example.toObject() })
+  Workout.create(req.body.workout)
+    // respond to successful `create` with status 201 and JSON of new "workout"
+    .then(workout => {
+      res.status(201).json({ workout: workout.toObject() })
     })
     // if an error occurs, pass it off to our error handler
     // the error handler needs the error message and the `res` object so that it
@@ -42,30 +41,41 @@ router.post('/workouts', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-// INDEX
-// GET /examples
-router.get('/examples', requireToken, (req, res, next) => {
-  Example.find()
-    .then(examples => {
-      // `examples` will be an array of Mongoose documents
+// todo: remove before deployment
+// Index all
+router.get('/workouts/all', (req, res, next) => {
+  Workout.find()
+    .then(workouts => {
+      // `workouts` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
       // apply `.toObject` to each one
-      return examples.map(example => example.toObject())
+      return workouts.map(workout => workout.toObject())
     })
-    // respond with status 200 and JSON of the examples
-    .then(examples => res.status(200).json({ examples: examples }))
+    // respond with status 200 and JSON of the workouts
+    .then(workouts => res.status(200).json({ workouts: workouts }))
+    // if an error occurs, pass it to the handler
+    .catch(next)
+})
+
+// INDEX with token -> only show workouts associated with token bearer
+router.get('/workouts', requireToken, (req, res, next) => {
+  Workout.find({ owner: req.user._id })
+    .then(workouts => {
+      return workouts.map(workout => workout.toObject())
+    })
+    .then(workouts => res.status(200).json({ workouts: workouts }))
     // if an error occurs, pass it to the handler
     .catch(next)
 })
 
 // SHOW
-// GET /examples/5a7db6c74d55bc51bdf39793
-router.get('/examples/:id', requireToken, (req, res, next) => {
+// GET /workouts/5a7db6c74d55bc51bdf39793
+router.get('/workouts/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
-  Example.findById(req.params.id)
+  Workout.findById(req.params.id)
     .then(handle404)
-    // if `findById` is succesful, respond with 200 and "example" JSON
-    .then(example => res.status(200).json({ example: example.toObject() }))
+    // if `findById` is successful, respond with 200 and "workout" JSON
+    .then(workout => res.status(200).json({ workout: workout.toObject() }))
     // if an error occurs, pass it to the handler
     .catch(next)
 })
