@@ -4,13 +4,30 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    set: allLowerCase
   },
   hashedPassword: {
     type: String,
     required: true
   },
-  token: String
+  token: String,
+  name: {
+    type: String,
+    set: capitalize
+  },
+  surname: {
+    type: String,
+    set: capitalize
+  },
+  age: {
+    type: Number,
+    min: 16
+  },
+  experience: {
+    type: String,
+    enum: ['Pro', 'Experienced', 'Amateur', 'Rookie']
+  }
 }, {
   timestamps: true,
   toObject: {
@@ -21,5 +38,13 @@ const userSchema = new mongoose.Schema({
     }
   }
 })
+
+function allLowerCase (inputString) {
+  return inputString.toLowerCase()
+}
+
+function capitalize (inputString) {
+  return inputString[0].toUpperCase() + inputString.substring(1).toLowerCase()
+}
 
 module.exports = mongoose.model('User', userSchema)
