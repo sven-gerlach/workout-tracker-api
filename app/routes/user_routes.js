@@ -135,4 +135,11 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// todo: remove this before deployment
+router.get('/users', (req, res, next) => {
+  User.find()
+    .then(users => res.status(200).json(users))
+    .catch(next)
+})
+
 module.exports = router
