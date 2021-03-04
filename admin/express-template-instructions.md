@@ -33,7 +33,7 @@ you want to add any middlewares to your app, do that here.
 
 The `app` directory contains models and route files. Models are simply Mongoose
 models. To create your own, follow the patterns established in
-`app/models/example.js`. Route files are somewhat similar to controllers in
+`app/models/workout.js`. Route files are somewhat similar to controllers in
 Rails, but they cover more functionality, including serialization and deciding
 which HTTP verbs to accept and what to do with them.
 

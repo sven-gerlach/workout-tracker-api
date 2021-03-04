@@ -1,6 +1,4 @@
-// Express docs: http://expressjs.com/en/api.html
 const express = require('express')
-// Passport docs: http://www.passportjs.org/docs/
 const passport = require('passport')
 
 // pull in Mongoose model for examples
@@ -22,10 +20,27 @@ const removeBlanks = require('../../lib/remove_blank_fields')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `req.user`
+
 const requireToken = passport.authenticate('bearer', { session: false })
 
 // instantiate a router (mini app that only handles routes)
 const router = express.Router()
+
+// CREATE
+router.post('/workouts', requireToken, (req, res, next) => {
+  // set owner of new example to be current user
+  req.body.workout.owner = req.user.id
+
+  Example.create(req.body.workout)
+    // respond to successful `create` with status 201 and JSON of new "example"
+    .then(example => {
+      res.status(201).json({ example: example.toObject() })
+    })
+    // if an error occurs, pass it off to our error handler
+    // the error handler needs the error message and the `res` object so that it
+    // can send an error message back to the client
+    .catch(next)
+})
 
 // INDEX
 // GET /examples
@@ -52,23 +67,6 @@ router.get('/examples/:id', requireToken, (req, res, next) => {
     // if `findById` is succesful, respond with 200 and "example" JSON
     .then(example => res.status(200).json({ example: example.toObject() }))
     // if an error occurs, pass it to the handler
-    .catch(next)
-})
-
-// CREATE
-// POST /examples
-router.post('/examples', requireToken, (req, res, next) => {
-  // set owner of new example to be current user
-  req.body.example.owner = req.user.id
-
-  Example.create(req.body.example)
-    // respond to succesful `create` with status 201 and JSON of new "example"
-    .then(example => {
-      res.status(201).json({ example: example.toObject() })
-    })
-    // if an error occurs, pass it off to our error handler
-    // the error handler needs the error message and the `res` object so that it
-    // can send an error message back to the client
     .catch(next)
 })
 

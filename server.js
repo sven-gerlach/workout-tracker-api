@@ -4,8 +4,8 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 
 // require route files
-const exampleRoutes = require('./app/routes/example_routes')
 const userRoutes = require('./app/routes/user_routes')
+const workoutRoutes = require('./app/routes/workout_routes')
 
 // require middleware
 const errorHandler = require('./lib/error_handler')
@@ -49,7 +49,6 @@ app.use(auth)
 // JS objects before they reach the route files.
 // The method `.use` sets up middleware for the Express application
 app.use(express.json())
-
 app.set('json spaces', 2)
 
 // this parses requests sent by `$.ajax`, which use a different content type
@@ -59,7 +58,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(requestLogger)
 
 // register route files
-app.use(exampleRoutes)
+app.use(workoutRoutes)
 app.use(userRoutes)
 
 // register error handling middleware

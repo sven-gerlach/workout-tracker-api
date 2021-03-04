@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const {allLowerCase, capitalize} = require('../../lib/util')
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -38,13 +39,5 @@ const userSchema = new mongoose.Schema({
     }
   }
 })
-
-function allLowerCase (inputString) {
-  return inputString.toLowerCase()
-}
-
-function capitalize (inputString) {
-  return inputString[0].toUpperCase() + inputString.substring(1).toLowerCase()
-}
 
 module.exports = mongoose.model('User', userSchema)
