@@ -80,8 +80,8 @@ router.get('/workouts/:id', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-// UPDATE: add a new exercise to a specific workout
-// PATCH /workouts/5a7db6c74d55bc51bdf39793
+// CREATE: a new exercise and add it to a specific workout
+// POST /workouts/5a7db6c74d55bc51bdf39793
 router.post('/workouts/:id/exercise', requireToken, removeBlanks, (req, res, next) => {
   const newExercise = req.body.exercise
 
@@ -99,13 +99,30 @@ router.post('/workouts/:id/exercise', requireToken, removeBlanks, (req, res, nex
     })
     // if that succeeded, return 204 and no JSON
     .then(obj => {
-      console.log(obj.workout)
-      console.log(obj.exercise)
       res.status(201).json({exercise: obj.workout.exercise[obj.exercise - 1] })
     })
     // if an error occurs, pass it to the handler
     .catch(next)
 })
+
+// CREATE: a new set and add it to an exercise
+router.post('/workouts/:id_w/exercise/:id_e', requireToken, (req, res, next) => {
+  const newSet = req.body.set
+  const workoutId = req.params.id_w
+  const exerciseId = req.params.id_e
+  let identifiedWorkout
+
+  Workout.findById(workoutId)
+    .then(workout => {
+      identifiedWorkout = workout
+      return workout.exercise.id(exerciseId)
+    })
+    .then(exercise => exercise.sets.push(newSet))
+    .then(() => identifiedWorkout.save())
+    .then(() => res.status(201).json({ exercise: identifiedWorkout.exercise.id(exerciseId) }))
+    .catch(next)
+})
+
 
 // DESTROY
 // DELETE /workouts/5a7db6c74d55bc51bdf39793
