@@ -14,7 +14,7 @@ const handle404 = customErrors.handle404
 const requireOwnership = customErrors.requireOwnership
 
 // this is middleware that will remove blank fields from `req.body`, e.g.
-// { example: { title: '', text: 'foo' } } -> { example: { text: 'foo' } }
+// { workout: { title: '', text: 'foo' } } -> { workout: { text: 'foo' } }
 const removeBlanks = require('../../lib/remove_blank_fields')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
@@ -80,25 +80,29 @@ router.get('/workouts/:id', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-// UPDATE
-// PATCH /examples/5a7db6c74d55bc51bdf39793
-router.patch('/examples/:id', requireToken, removeBlanks, (req, res, next) => {
-  // if the client attempts to change the `owner` property by including a new
-  // owner, prevent that by deleting that key/value pair
-  delete req.body.example.owner
+// UPDATE: add a new exercise to a specific workout
+// PATCH /workouts/5a7db6c74d55bc51bdf39793
+router.post('/workouts/:id/exercise', requireToken, removeBlanks, (req, res, next) => {
+  const newExercise = req.body.exercise
 
-  Example.findById(req.params.id)
+  Workout.findById(req.params.id)
     .then(handle404)
-    .then(example => {
+    .then(workout => {
       // pass the `req` object and the Mongoose record to `requireOwnership`
       // it will throw an error if the current user isn't the owner
-      requireOwnership(req, example)
+      requireOwnership(req, workout)
 
-      // pass the result of Mongoose's `.update` to the next `.then`
-      return example.updateOne(req.body.example)
+      // push the new exercise onto the exercise array
+      const exercise = workout.exercise.push(newExercise)
+      workout.save()
+      return {workout, exercise}
     })
     // if that succeeded, return 204 and no JSON
-    .then(() => res.sendStatus(204))
+    .then(obj => {
+      console.log(obj.workout)
+      console.log(obj.exercise)
+      res.status(201).json({exercise: obj.workout.exercise[obj.exercise - 1] })
+    })
     // if an error occurs, pass it to the handler
     .catch(next)
 })
