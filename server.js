@@ -57,6 +57,10 @@ app.use(express.urlencoded({ extended: true }))
 // log each request as it comes in for debugging
 app.use(requestLogger)
 
+app.get('/', (req, res) => {
+  res.send('Server is listening for requests')
+})
+
 // register route files
 app.use(workoutRoutes)
 app.use(userRoutes)
