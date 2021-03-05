@@ -63,7 +63,62 @@ POST | /sign-up | credentials | empty | 201, Created | user obj
 POST | /sign-in | credentials | empty | 200, OK | user obj w/token
 DELETE | /sign-out | empty | token | 201. Created | empty
 PATCH | /change-password | passwords | token | 204, No Content |user obj w/token
-GET | /users/:id | n/a | token | 200, OK | user obj w/token
+PATCH | /users | user details | token | 200, OK | user obj
+
+##### POST Sign-up
+```shell
+{
+  "user": {
+    "_id": "604234bd95293106a28bebfd",
+    "email": "rg@rg.com",
+    "createdAt": "2021-03-05T13:40:13.192Z",
+    "updatedAt": "2021-03-05T13:40:13.192Z",
+    "__v": 0
+  }
+}
+```
+
+##### POST Sign-in
+```shell
+{
+  "user": {
+    "_id": "60410798b3f054e39d5b68b9",
+    "email": "sg@sg.com",
+    "createdAt": "2021-03-04T16:15:20.950Z",
+    "updatedAt": "2021-03-05T13:42:00.356Z",
+    "__v": 0,
+    "token": "d655aa89a37d26fd7339df213b7acc75"
+  }
+}
+```
+
+##### DELETE Sign-out
+```shell
+'header: 204 No Content'
+```
+
+##### PATCH Change PW
+```shell
+'header: 204 No Content'
+```
+
+##### PATCH User details
+```shell
+{
+  "user": {
+    "_id": "604234bd95293106a28bebfd",
+    "email": "rg@rg.com",
+    "createdAt": "2021-03-05T13:40:13.192Z",
+    "updatedAt": "2021-03-05T13:53:05.924Z",
+    "__v": 0,
+    "token": "1147f8d8b92c966f60aa51e7af6ee87f",
+    "age": 74,
+    "experience": "Rookie",
+    "name": "Renate",
+    "surname": "Gerlach"
+  }
+}
+```
 
 #### Workouts
 
@@ -71,9 +126,89 @@ Verb | URI | Body | Headers | Status | Body
 --- | --- | --- | --- | --- | ---
 POST | /workouts | {} | token | 201, Created | created workout obj
 GET | /workouts/:id | n/a | token | 200, OK | workout obj
-GET | /workouts | n/a | token | 200, OK | workout obj array
-PATCH | /workouts/:id | workout obj | token | 200, OK | workout obj
+GET | /workouts | n/a | token | 200, OK | workouts obj array
+PATCH | /workouts/:id | exercise obj | token | 201, OK | workout obj
+PATCH | /workouts/:id_w/exercise/:id_e | set obj | token | 201, OK | exercise obj
 *DELETE* | */workouts/:id* | *n/a* | *token* | *201, Created* | *n/a*
+
+##### POST Create workout
+```shell
+{
+  "workout": {
+    "_id": "60423d8739fff1075e3e5774",
+    "weightUnit": "kg",
+    "owner": "604234bd95293106a28bebfd",
+    "exercise": [],
+    "createdAt": "2021-03-05T14:17:43.980Z",
+    "updatedAt": "2021-03-05T14:17:43.980Z",
+    "__v": 0
+  }
+}
+```
+
+##### GET Find workout
+```shell
+{
+  "workout": {
+    "_id": "60423d8739fff1075e3e5774",
+    "weightUnit": "kg",
+    "owner": "604234bd95293106a28bebfd",
+    "exercise": [],
+    "createdAt": "2021-03-05T14:17:43.980Z",
+    "updatedAt": "2021-03-05T14:17:43.980Z",
+    "__v": 0
+  }
+}
+```
+
+##### GET Find all workouts
+```shell
+{
+  "workouts": [
+    {
+      "_id": "60423d8739fff1075e3e5774",
+      "weightUnit": "kg",
+      "owner": "604234bd95293106a28bebfd",
+      "exercise": [],
+      "createdAt": "2021-03-05T14:17:43.980Z",
+      "updatedAt": "2021-03-05T14:17:43.980Z",
+      "__v": 0
+    }
+  ]
+}
+```
+
+##### PATCH Create a new exercise
+```shell
+{
+  "exercise": {
+    "_id": "60423fad39fff1075e3e5775",
+    "title": "Body weight squats",
+    "sets": []
+  }
+}
+```
+
+##### PATCH Create a new set inside an exercise
+```shell
+{
+  "exercise": {
+    "sets": [
+      {
+        "_id": "6042412ff0943f08cd6d0c12",
+        "weight": 0,
+        "repetitions": 10,
+        "createdAt": "2021-03-05T14:33:20.000Z",
+        "updatedAt": "2021-03-05T14:33:20.000Z"
+      }
+    ],
+    "_id": "60423fad39fff1075e3e5775",
+    "title": "Body weight squats",
+    "createdAt": "2021-03-05T14:26:53.300Z",
+    "updatedAt": "2021-03-05T14:33:20.000Z"
+  }
+}
+```
 
 ## Core Tasks
 ### Planning

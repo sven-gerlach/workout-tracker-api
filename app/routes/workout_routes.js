@@ -82,7 +82,7 @@ router.get('/workouts/:id', requireToken, (req, res, next) => {
 
 // CREATE: a new exercise and add it to a specific workout
 // POST /workouts/5a7db6c74d55bc51bdf39793
-router.post('/workouts/:id/exercise', requireToken, removeBlanks, (req, res, next) => {
+router.post('/workouts/:id', requireToken, removeBlanks, (req, res, next) => {
   const newExercise = req.body.exercise
 
   Workout.findById(req.params.id)
@@ -123,7 +123,7 @@ router.post('/workouts/:id_w/exercise/:id_e', requireToken, (req, res, next) => 
     .catch(next)
 })
 
-
+// todo: this might not be needed
 // DESTROY
 // DELETE /workouts/5a7db6c74d55bc51bdf39793
 router.delete('/workouts/:id', requireToken, (req, res, next) => {

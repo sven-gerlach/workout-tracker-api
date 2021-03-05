@@ -136,6 +136,7 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// todo: this route is also not needed as a signed in user would have already received their token and other details
 router.get('/users', requireToken, (req, res, next) => {
   res.status(200).send(req.user)
 })
@@ -158,7 +159,7 @@ router.patch('/users', requireToken, (req, res, next) => {
       return user.save()
     })
     .then(user => {
-      res.status(200).json(user)
+      res.status(200).json({ user: user.toObject() })
     })
     .catch(next)
 })
