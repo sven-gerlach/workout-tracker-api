@@ -119,7 +119,11 @@ router.post('/workouts/:id_w/exercise/:id_e', requireToken, (req, res, next) => 
     })
     .then(exercise => exercise.sets.push(newSet))
     .then(() => identifiedWorkout.save())
-    .then(() => res.status(201).json({ exercise: identifiedWorkout.exercise.id(exerciseId) }))
+    .then(() => {
+      const sets = identifiedWorkout.exercise.id(exerciseId).sets
+      const newSet = sets[sets.length - 1]
+      res.status(201).json({ set: newSet })
+    })
     .catch(next)
 })
 

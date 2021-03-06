@@ -192,20 +192,12 @@ PATCH | /workouts/:id_w/exercise/:id_e | set obj | token | 201, OK | exercise ob
 ##### PATCH Create a new set inside an exercise
 ```shell
 {
-  "exercise": {
-    "sets": [
-      {
-        "_id": "6042412ff0943f08cd6d0c12",
-        "weight": 0,
-        "repetitions": 10,
-        "createdAt": "2021-03-05T14:33:20.000Z",
-        "updatedAt": "2021-03-05T14:33:20.000Z"
-      }
-    ],
-    "_id": "60423fad39fff1075e3e5775",
-    "title": "Body weight squats",
-    "createdAt": "2021-03-05T14:26:53.300Z",
-    "updatedAt": "2021-03-05T14:33:20.000Z"
+  "set": {
+    "_id": "6042e1e62e35d6335e31734e",
+    "weight": 100,
+    "repetitions": 10,
+    "createdAt": "2021-03-06T01:59:02.502Z",
+    "updatedAt": "2021-03-06T01:59:02.502Z"
   }
 }
 ```
