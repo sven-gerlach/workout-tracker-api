@@ -204,11 +204,11 @@ PATCH | /workouts/:id_w/exercise/:id_e | set obj | token | 201, OK | exercise ob
 
 ## Core Tasks
 ### Planning
-1.  [ ] Review [full-stack-project-practice](https://git.generalassemb.ly/ga-wdi-boston/full-stack-project-practice)
-1.  [ ] Review [full-stack-project-modeling-lab](https://git.generalassemb.ly/ga-wdi-boston/full-stack-project-modeling-lab)
-1.  [ ] Create User Stories
-1.  [ ] Create Wire Frames
-1.  [ ] Create ERD
+1.  [x] Review [full-stack-project-practice](https://git.generalassemb.ly/ga-wdi-boston/full-stack-project-practice)
+1.  [x] Review [full-stack-project-modeling-lab](https://git.generalassemb.ly/ga-wdi-boston/full-stack-project-modeling-lab)
+1.  [x] Create User Stories
+1.  [x] Create Wire Frames
+1.  [x] Create ERD
 
 ### Set Up
 
@@ -216,7 +216,7 @@ API
 
 1.  [x] [Download Express API Template](https://git.generalassemb.ly/ga-wdi-boston/express-api-template)
 1.  [x] Create a Github Repository
-1.  [ ] [Deploy to Heroku](https://git.generalassemb.ly/ga-wdi-boston/express-api-deployment-guide)
+1.  [x] [Deploy to Heroku](https://git.generalassemb.ly/ga-wdi-boston/express-api-deployment-guide)
 
 Client
 
@@ -225,25 +225,25 @@ Client
 1.  [ ] [Deploy to Github Pages](https://git.generalassemb.ly/ga-wdi-boston/gh-pages-deployment-guide)
 
 ### API
-1.  [ ] Review [express-api-crud](https://git.generalassemb.ly/ga-wdi-boston/express-api-crud), [express-api-relationships](https://git.generalassemb.ly/ga-wdi-boston/express-api-relationships), and [express-api-auth](https://git.generalassemb.ly/ga-wdi-boston/express-api-auth)
-1.  [ ] CRUD your resource
-1.  [ ] Test your resource's endpoints with curl scripts
-1.  [ ] Add the relationship to a User
-1.  [ ] Add User ownership to the resource controller
-1.  [ ] Test your resource's endpoints with curl scripts
+1.  [x] Review [express-api-crud](https://git.generalassemb.ly/ga-wdi-boston/express-api-crud), [express-api-relationships](https://git.generalassemb.ly/ga-wdi-boston/express-api-relationships), and [express-api-auth](https://git.generalassemb.ly/ga-wdi-boston/express-api-auth)
+1.  [x] CRUD your resource
+1.  [x] Test your resource's endpoints with curl scripts
+1.  [x] Add the relationship to a User
+1.  [x] Add User ownership to the resource controller
+1.  [x] Test your resource's endpoints with curl scripts
 
 ### Client
-1.  [ ] Review [api-token-auth](https://git.generalassemb.ly/ga-wdi-boston/api-token-auth)
-1.  [ ] Sign Up (curl then web app)
-1.  [ ] Sign In (curl then web app)
-1.  [ ] Change Password (curl then web app)
-1.  [ ] Sign Out (curl then web page)
+1.  [x] Review [api-token-auth](https://git.generalassemb.ly/ga-wdi-boston/api-token-auth)
+1.  [x] Sign Up (curl then web app)
+1.  [x] Sign In (curl then web app)
+1.  [x] Change Password (curl then web app)
+1.  [x] Sign Out (curl then web page)
 1.  [ ] All API calls have success or failure messages
-1.  [ ] Review [query-ajax-post](https://github.com/ga-wdi-boston/jquery-ajax-post)
-1.  [ ] Create resource (curl then web app)
+1.  [x] Review [query-ajax-post](https://github.com/ga-wdi-boston/jquery-ajax-post)
+1.  [x] Create resource (curl then web app)
 1.  [ ] Get all of their owned resources (curl then web app)
 1.  [ ] Delete single resource (curl then web app)
-1.  [ ] Update single resource (curl then web app)
+1.  [x] Update single resource (curl then web app)
 
 ### Final Touches
 1.  [ ] README

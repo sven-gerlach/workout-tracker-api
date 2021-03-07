@@ -68,6 +68,11 @@ router.get('/workouts', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// INDEX all sets
+router.get('workouts/sets', requireToken, (req, res, next) => {
+  Workout.find({sets})
+})
+
 // SHOW
 // GET /workouts/5a7db6c74d55bc51bdf39793
 router.get('/workouts/:id', requireToken, (req, res, next) => {

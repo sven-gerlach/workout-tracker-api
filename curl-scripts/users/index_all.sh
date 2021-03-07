@@ -5,7 +5,6 @@ URL_PATH="/users/all"
 
 curl "${API}${URL_PATH}" \
   --include \
-
   --request GET \
 
 echo
