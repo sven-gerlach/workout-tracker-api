@@ -141,12 +141,12 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
 //   res.status(200).send(req.user)
 // })
 
-// // route handler may be used for future CLI debugging purposes
-// router.get('/users/all', (req, res, next) => {
-//   User.find()
-//     .then(users => res.status(200).json(users))
-//     .catch(next)
-// })
+// route handler may be used for future CLI debugging purposes
+router.get('/users/all', (req, res, next) => {
+  User.find()
+    .then(users => res.status(200).json(users))
+    .catch(next)
+})
 
 router.patch('/users', requireToken, (req, res, next) => {
   const userData = req.body.user
@@ -161,6 +161,19 @@ router.patch('/users', requireToken, (req, res, next) => {
     .then(user => {
       res.status(200).json({ user: user.toObject() })
     })
+    .catch(next)
+})
+
+// DESTROY a user profile
+// DELETE /users/id
+router.delete('/users/:id', requireToken, (req, res, next) => {
+  User.findById(req.params.id)
+    .then(user => {
+      user.deleteOne()
+    })
+    // send back 204 and no content if the deletion succeeded
+    .then(() => res.sendStatus(204))
+    // if an error occurs, pass it to the handler
     .catch(next)
 })
 
