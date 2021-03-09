@@ -136,17 +136,17 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-// todo: this route is also not needed as a signed in user would have already received their token and other details
-router.get('/users', requireToken, (req, res, next) => {
-  res.status(200).send(req.user)
-})
+// // route handler may be used for future CLI debugging purposes
+// router.get('/users', requireToken, (req, res, next) => {
+//   res.status(200).send(req.user)
+// })
 
-// todo: remove this before deployment
-router.get('/users/all', (req, res, next) => {
-  User.find()
-    .then(users => res.status(200).json(users))
-    .catch(next)
-})
+// // route handler may be used for future CLI debugging purposes
+// router.get('/users/all', (req, res, next) => {
+//   User.find()
+//     .then(users => res.status(200).json(users))
+//     .catch(next)
+// })
 
 router.patch('/users', requireToken, (req, res, next) => {
   const userData = req.body.user

@@ -41,21 +41,21 @@ router.post('/workouts', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-// todo: remove before deployment
-// Index all
-router.get('/workouts/all', (req, res, next) => {
-  Workout.find()
-    .then(workouts => {
-      // `workouts` will be an array of Mongoose documents
-      // we want to convert each one to a POJO, so we use `.map` to
-      // apply `.toObject` to each one
-      return workouts.map(workout => workout.toObject())
-    })
-    // respond with status 200 and JSON of the workouts
-    .then(workouts => res.status(200).json({ workouts: workouts }))
-    // if an error occurs, pass it to the handler
-    .catch(next)
-})
+// // route handler may be used for future CLI debugging purposes
+// // Index all
+// router.get('/workouts/all', (req, res, next) => {
+//   Workout.find()
+//     .then(workouts => {
+//       // `workouts` will be an array of Mongoose documents
+//       // we want to convert each one to a POJO, so we use `.map` to
+//       // apply `.toObject` to each one
+//       return workouts.map(workout => workout.toObject())
+//     })
+//     // respond with status 200 and JSON of the workouts
+//     .then(workouts => res.status(200).json({ workouts: workouts }))
+//     // if an error occurs, pass it to the handler
+//     .catch(next)
+// })
 
 // INDEX with token -> only show workouts associated with token bearer
 router.get('/workouts', requireToken, (req, res, next) => {
@@ -66,11 +66,6 @@ router.get('/workouts', requireToken, (req, res, next) => {
     .then(workouts => res.status(200).json({ workouts: workouts }))
     // if an error occurs, pass it to the handler
     .catch(next)
-})
-
-// INDEX all sets
-router.get('workouts/sets', requireToken, (req, res, next) => {
-  Workout.find({sets})
 })
 
 // SHOW
@@ -132,7 +127,6 @@ router.post('/workouts/:id_w/exercise/:id_e', requireToken, (req, res, next) => 
     .catch(next)
 })
 
-// todo: this might not be needed
 // DESTROY
 // DELETE /workouts/5a7db6c74d55bc51bdf39793
 router.delete('/workouts/:id', requireToken, (req, res, next) => {
