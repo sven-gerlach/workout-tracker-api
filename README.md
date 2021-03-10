@@ -11,7 +11,7 @@ Every fitness tracker I ever used failed to live up to the expectations because:
    advice on the back of that data
 
 ## Back-End Application
-This repo is the backend of the project. It was written in Node.js and uses Express to handle the routes for the various requests. Mongoose and MongoDB are used for database storage of user data.
+This repo is the backend of the project. It was written in Node.js and uses Express to handle the routes for the various requests. Mongoose and MongoDB are used for database storage of user data. Other libraries and frameworks include bcrypt, cors, lodash, passport, and passport-http-bearer.
 
 ## Hosted Applications
 ### Back-end
@@ -213,7 +213,8 @@ API
 
 ### Final Touches
 1.  [x] README
-2.  [x] Troubleshoot/Debug
+1.  [x] Troubleshoot/Debug
+1.  [x] Refactor
 
 ## Stretch Goals / Next Development Phase
 1. Build in timer functionality that allows the user to record time, including total time under load, total breaks between reps and, separately, time between sets, as well as average break lengths

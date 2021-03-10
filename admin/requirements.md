@@ -21,19 +21,19 @@ Demonstrate using version control by:
 Produce documentation in the form of a **README**, which must:
 1.  [x] Create 2 Github repos (one for your front-end and one for your back-end)
 1.  [x] Pin both repositories on GitHub as a Popular Repository
-1.  [ ] Each repo will need a README.md file with a link to the other repo and an explanation of the what the app does and how it works.
-1.  [ ] Each repo must contain the link to both deployed sites
-1.  [ ] Complete the repository `Description` field and `Website` field with a meaningful sentence description of the application and link to the live URL
+1.  [x] Each repo will need a README.md file with a link to the other repo and an explanation of the what the app does and how it works.
+1.  [x] Each repo must contain the link to both deployed sites
+1.  [x] Complete the repository `Description` field and `Website` field with a meaningful sentence description of the application and link to the live URL
     ![github image](https://git.generalassemb.ly/storage/user/3667/files/beae41ae-aaaa-11e7-8867-63958d376a0b)
-1.  [ ] List technologies used
-1.  [ ] List unsolved problems which would be fixed in future iterations.
-1.  [ ] Document your planning and tell a story about your development process and problem-solving strategy.
+1.  [x] List technologies used
+1.  [x] List unsolved problems which would be fixed in future iterations.
+1.  [x] Document your planning and tell a story about your development process and problem-solving strategy.
 
 Your front-end repo's README should also have
-1.  [ ] Link to wireframes and user stories.
+1.  [x] Link to wireframes and user stories.
 
 Your back-end repo's README should also have
-1.  [ ] Link to Entity Relationship Diagram (ERD).
+1.  [x] Link to Entity Relationship Diagram (ERD).
 
 ### Auth Specifications
 1.  [x] Signup with email, password, and password confirmation.
