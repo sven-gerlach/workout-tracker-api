@@ -64,6 +64,7 @@ POST | /sign-in | credentials | empty | 200, OK | user obj w/token
 DELETE | /sign-out | empty | token | 201. Created | empty
 PATCH | /change-password | passwords | token | 204, No Content |user obj w/token
 PATCH | /users | user details | token | 200, OK | user obj
+DELETE | /users/:id | empty | token | 204 | empty
 
 ##### POST Sign-up
 ```shell
@@ -116,6 +117,16 @@ PATCH | /users | user details | token | 200, OK | user obj
     "experience": "Rookie",
     "name": "Renate",
     "surname": "Gerlach"
+  }
+}
+```
+
+##### DELETE User
+```shell
+{
+  "user": {
+    "_id": "604234bd95293106a28bebfd",
+    "token": "1147f8d8b92c966f60aa51e7af6ee87f"
   }
 }
 ```
@@ -222,7 +233,7 @@ Client
 
 1.  [x] [Download Browser Template](https://git.generalassemb.ly/ga-wdi-boston/browser-template)
 1.  [x] Create a Github Repository
-1.  [ ] [Deploy to Github Pages](https://git.generalassemb.ly/ga-wdi-boston/gh-pages-deployment-guide)
+1.  [x] [Deploy to Github Pages](https://git.generalassemb.ly/ga-wdi-boston/gh-pages-deployment-guide)
 
 ### API
 1.  [x] Review [express-api-crud](https://git.generalassemb.ly/ga-wdi-boston/express-api-crud), [express-api-relationships](https://git.generalassemb.ly/ga-wdi-boston/express-api-relationships), and [express-api-auth](https://git.generalassemb.ly/ga-wdi-boston/express-api-auth)
@@ -238,17 +249,17 @@ Client
 1.  [x] Sign In (curl then web app)
 1.  [x] Change Password (curl then web app)
 1.  [x] Sign Out (curl then web page)
-1.  [ ] All API calls have success or failure messages
+1.  [x] All API calls have success or failure messages
 1.  [x] Review [query-ajax-post](https://github.com/ga-wdi-boston/jquery-ajax-post)
 1.  [x] Create resource (curl then web app)
-1.  [ ] Get all of their owned resources (curl then web app)
-1.  [ ] Delete single resource (curl then web app)
+1.  [x] Get all of their owned resources (curl then web app)
+1.  [x] Delete single resource (curl then web app)
 1.  [x] Update single resource (curl then web app)
 
 ### Final Touches
 1.  [ ] README
-2.  [ ] Troubleshoot/Debug
-3.  [ ] Style
+2.  [x] Troubleshoot/Debug
+3.  [x] Style
 
 
 ## Stretch Goals
