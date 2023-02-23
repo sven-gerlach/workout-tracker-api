@@ -7,18 +7,25 @@ Whilst this is setting the scene and future development potential, this version 
 
 Every fitness tracker I ever used failed to live up to the expectations because:
 1. They have proved to be intrusive during the work-out - requiring cumbersome data entry or offer up a plethora of useless information that bears limited to no actionable value (e.g. staying within a certain heart rate band for cardio-vascular training)
-1. Currently, available apps collect some data, but none actually offer much actionable
+2. Currently, available apps collect some data, but none actually offer much actionable
    advice on the back of that data
 
 ## Back-End Application
 This repo is the backend of the project. It was written in Node.js and uses Express to handle the routes for the various requests. Mongoose and MongoDB are used for database storage of user data. Other libraries and frameworks include bcrypt, cors, lodash, passport, and passport-http-bearer.
 
-## Hosted Applications
-### Back-end
-The back-end is hosted on Heroku and can be found [here](https://glacial-lowlands-84293.herokuapp.com/). The repository of the back-end can be found [here](https://github.com/sven-gerlach/workout-tracker)
+## Overview of Packages
+- bcrypt
+- Cors
+- Express
+- JavaScript
+- Lodash
+- MongoDB
+- Mongoose
+- NodeJS
+- Passport
 
-### Front-end
-The front-end app is hosted on GitHub Pages and can be found [here](https://sven-gerlach.github.io/workout-tracker-client/). The front-end repo can be found [here](https://github.com/sven-gerlach/workout-tracker-client)
+## Hosted Applications
+The app is deployed on Render under the URL https://ti-sq80.onrender.com.
 
 ## Entity Relationship Diagram
 ![ERD](admin/entity_relationship_diagram.png)
@@ -32,14 +39,14 @@ The app is structured to deal with four entities, namely:
 ## Routes
 ### Users
 
-Verb | URI | Body | Headers | Status Response | Body Response
---- | --- | --- | --- | --- | ---
-POST | /sign-up | credentials | empty | 201, Created | user obj
-POST | /sign-in | credentials | empty | 200, OK | user obj w/token
-DELETE | /sign-out | empty | token | 201. Created | empty
-PATCH | /change-password | passwords | token | 204, No Content |user obj w/token
-PATCH | /users | user details | token | 200, OK | user obj
-DELETE | /users/:id | empty | token | 204 | empty
+| Verb   | URI              | Body         | Headers | Status Response | Body Response    |
+|--------|------------------|--------------|---------|-----------------|------------------|
+| POST   | /sign-up         | credentials  | empty   | 201, Created    | user obj         |
+| POST   | /sign-in         | credentials  | empty   | 200, OK         | user obj w/token |
+| DELETE | /sign-out        | empty        | token   | 201. Created    | empty            |
+| PATCH  | /change-password | passwords    | token   | 204, No Content | user obj w/token |
+| PATCH  | /users           | user details | token   | 200, OK         | user obj         |
+| DELETE | /users/:id       | empty        | token   | 204             | empty            |
 
 #### POST Sign-up
 ```shell
@@ -108,14 +115,14 @@ DELETE | /users/:id | empty | token | 204 | empty
 
 ### Workouts
 
-Verb | URI | Body | Headers | Status Response | Body Response
---- | --- | --- | --- | --- | ---
-POST | /workouts | {} | token | 201, Created | created workout obj
-GET | /workouts/:id | n/a | token | 200, OK | workout obj
-GET | /workouts | n/a | token | 200, OK | workouts obj array
-PATCH | /workouts/:id | exercise obj | token | 201, OK | workout obj
-PATCH | /workouts/:id_w/exercise/:id_e | set obj | token | 201, OK | exercise obj
-DELETE | /workouts/:id | n/a | token | 201, Created | n/a
+| Verb   | URI                            | Body         | Headers | Status Response | Body Response       |
+|--------|--------------------------------|--------------|---------|-----------------|---------------------|
+| POST   | /workouts                      | {}           | token   | 201, Created    | created workout obj |
+| GET    | /workouts/:id                  | n/a          | token   | 200, OK         | workout obj         |
+| GET    | /workouts                      | n/a          | token   | 200, OK         | workouts obj array  |
+| PATCH  | /workouts/:id                  | exercise obj | token   | 201, OK         | workout obj         |
+| PATCH  | /workouts/:id_w/exercise/:id_e | set obj      | token   | 201, OK         | exercise obj        |
+| DELETE | /workouts/:id                  | n/a          | token   | 201, Created    | n/a                 |
 
 #### POST Create workout
 ```shell
@@ -192,29 +199,29 @@ DELETE | /workouts/:id | n/a | token | 201, Created | n/a
 ## Planning Documentation
 
 ### Planning
-1.  [x] Review of the requirements / brief
-1.  [x] Create User Stories
-1.  [x] Create ERD
-1.  [x] Create Wire Frames
+-[x] Review of the requirements / brief
+-[x] Create User Stories
+-[x] Create ERD
+-[x] Create Wire Frames
 
 ### Set Up
 
 API
 
-1.  [x] Create a Github Repository
-1.  [x] Deploy the back-end to Heroku
+-[x] Create a Github Repository
+-[x] Deploy the back-end to Heroku
 
 ### API
-1.  [x] CRUD the resources
-1.  [x] Test resource's endpoints with curl scripts
-1.  [x] Add the relationship to a User
-1.  [x] Add User ownership to the resource controller
-1.  [x] Test resource's endpoints with curl scripts
+-[x] CRUD the resources
+-[x] Test resource's endpoints with curl scripts
+-[x] Add the relationship to a User
+-[x] Add User ownership to the resource controller
+-[x] Test resource's endpoints with curl scripts
 
 ### Final Touches
-1.  [x] README
-1.  [x] Troubleshoot/Debug
-1.  [x] Refactor
+-[x] README
+-[x] Troubleshoot/Debug
+-[x] Refactor
 
 ## Stretch Goals / Next Development Phase
 1. Build in timer functionality that allows the user to record time, including total time under load, total breaks between reps and, separately, time between sets, as well as average break lengths

@@ -6,9 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "mocha --exit",
-    "server": "nodemon server.js",
     "serve": "nodemon server.js",
-    "s": "nodemon server.js",
     "debug-server": "DEBUG=express:* nodemon server.js"
   },
   "author": "",
@@ -32,9 +30,5 @@
     "mocha": "^6.2.2",
     "nodemon": "^2.0.2",
     "standard": "^14.3.1"
-  },
-  "engines": {
-    "node": "10.15.0",
-    "npm": "6.4.1"
   }
 }
