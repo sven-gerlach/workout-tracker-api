@@ -14,20 +14,15 @@ const requestLogger = require('./lib/request_logger')
 
 // require database configuration logic
 // `db` will be the actual Mongo URI as a string
-const db = require('./config/db')
+const mongoURI = require('./config/db')
 
 // require configured passport authentication middleware
 const auth = require('./lib/auth')
 
-// define server and client ports
-// used for cors and local port declaration
-const serverDevPort = 4741
-const clientDevPort = 7165
-
 // establish database connection
 // use new version of URL parser
 // use createIndex instead of deprecated ensureIndex
-mongoose.connect(db, {
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true
@@ -38,10 +33,11 @@ const app = express()
 
 // set CORS headers on response from this API using the `cors` NPM package
 // `CLIENT_ORIGIN` is an environment variable that will be set on Heroku
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || `http://localhost:${clientDevPort}` }))
+app.use(cors({ origin: process.env.CLIENT_ORIGIN }))
+console.log(process.env.CLIENT_ORIGIN);
 
 // define port for API to run on
-const port = process.env.PORT || serverDevPort
+const port = process.env.PORT || 3001
 
 // register passport authentication middleware
 app.use(auth)

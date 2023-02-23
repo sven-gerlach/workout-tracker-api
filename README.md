@@ -25,7 +25,10 @@ This repo is the backend of the project. It was written in Node.js and uses Expr
 - Passport
 
 ## Hosted Applications
-The app is deployed on Render under the URL https://ti-sq80.onrender.com.
+The app is deployed on Render under the URL https://workout-tracker-api-cl81.onrender.com.
+
+## Links to Related Repositories
+The front-end repo can be found on [GitHub](https://github.com/sven-gerlach/workout-tracker-client).
 
 ## Entity Relationship Diagram
 ![ERD](admin/entity_relationship_diagram.png)
