@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "start:serverless": "doppler run -c dev -- serverless offline --localEnvironment true",
+    "start:serverless": "doppler run -c dev -- serverless offline --localEnvironment true --httpPort 3001",
     "test": "mocha --exit",
     "serve": "doppler run -- nodemon server.js",
     "debug-server": "DEBUG=express:* nodemon server.js",

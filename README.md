@@ -25,7 +25,14 @@ This repo is the backend of the project. It was written in Node.js and uses Expr
 - Passport
 
 ## Hosted Applications
-The app is deployed on Render under the URL https://workout-tracker-api-cl81.onrender.com.
+
+### AWS / Serverless
+The app is deployed via Serverless on AWS Lambda/Gateway under the URL https://ck7k22n5j9.execute-api.us-east-1.amazonaws.com/prod/.
+Deployment is actioned via the npm script `npm run deploy:serverless`.
+
+### Render
+The app is also deployed on Render under the URL https://workout-tracker-api-cl81.onrender.com.
+A CI/CD pipeline for the main branch ensures that any merge into the main branch effects an automatic deployment.
 
 ## Links to Related Repositories
 The front-end repo can be found on [GitHub](https://github.com/sven-gerlach/workout-tracker-client).
