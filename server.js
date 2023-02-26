@@ -72,5 +72,5 @@ app.listen(port, () => {
   console.log('listening on port ' + port)
 })
 
-// needed for testing
+// needed for testing and to initiate serverless deployment to AWS Lambda
 module.exports = app

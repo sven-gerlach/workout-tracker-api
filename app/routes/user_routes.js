@@ -4,7 +4,7 @@ const crypto = require('crypto')
 // Passport docs: http://www.passportjs.org/docs/
 const passport = require('passport')
 // bcrypt docs: https://github.com/kelektiv/node.bcrypt.js
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 // see above for explanation of "salting", 10 rounds is recommended
 const bcryptSaltRounds = 10

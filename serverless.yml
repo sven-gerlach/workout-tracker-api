@@ -1,0 +1,33 @@
+org: svengerlach
+app: workout-tracker-api
+service: workout-tracker-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  deploymentMethod: direct
+  stage: ${opt:stage, self:custom.defaultStage}
+  region: us-east-1
+  environment:
+    STAGE: ${self:provider.stage}
+
+custom:
+  defaultStage: ${env:DOPPLER_ENVIRONMENT}
+
+functions:
+  api:
+    handler: serverless.handler
+    environment:
+      CLIENT_ORIGIN: ${env:CLIENT_ORIGIN}
+      MONGO_URI: ${env:MONGO_URI}
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'
+
+plugins:
+  - serverless-offline
