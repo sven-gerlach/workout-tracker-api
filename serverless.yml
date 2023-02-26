@@ -11,6 +11,8 @@ provider:
 
 custom:
   defaultStage: ${env:DOPPLER_ENVIRONMENT}
+  webpack:
+    webpackConfig: webpack.config.js
 
 functions:
   api:
@@ -30,3 +32,4 @@ functions:
 
 plugins:
   - serverless-offline
+  - serverless-plugin-webpack
