@@ -7,7 +7,7 @@ let serverlessExpressInstance
 async function setup(event, context, callback) {
   const app = await startApp();
 
-  serverlessExpressInstance =  serverlessExpress({ app });
+  serverlessExpressInstance = serverlessExpress({ app });
   return serverlessExpressInstance(event, context, callback);
 }
 
