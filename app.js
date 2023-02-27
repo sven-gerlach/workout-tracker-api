@@ -19,10 +19,10 @@ const mongoURI = require('./config/db')
 // require configured passport authentication middleware
 const auth = require('./lib/auth')
 
-// establish database connection
-// use new version of URL parser
-// use createIndex instead of deprecated ensureIndex
 async function startApp() {
+  // establish database connection
+  // use new version of URL parser
+  // use createIndex instead of deprecated ensureIndex
   await mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useCreateIndex: true,
