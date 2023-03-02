@@ -31,8 +31,8 @@ The app is deployed via Serverless on AWS Lambda/Gateway under the URL https://c
 Deployment is actioned via the npm script `npm run deploy:serverless`.
 
 ### Render
-The app is also deployed on Render under the URL https://workout-tracker-api-cl81.onrender.com.
-A CI/CD pipeline for the main branch ensures that any merge into the main branch effects an automatic deployment.
+The app was also deployed on Render. However, Render's free tier uses ephemeral server instances that shut down after some time of inactivity. Whilst that is fine in principle, 
+it takes anywhere between 15-30 seconds for the instance to spin up again, leading to rather long wait times. That was the main reason for looking into serverless architecture.
 
 ## Links to Related Repositories
 The front-end repo can be found on [GitHub](https://github.com/sven-gerlach/workout-tracker-client).
