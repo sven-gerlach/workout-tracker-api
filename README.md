@@ -26,13 +26,12 @@ This repo is the backend of the project. It was written in Node.js and uses Expr
 
 ## Hosted Applications
 
-### AWS / Serverless
-The app is deployed via Serverless on AWS Lambda/Gateway under the URL https://ck7k22n5j9.execute-api.us-east-1.amazonaws.com/prod/.
-Deployment is actioned via the npm script `npm run deploy:serverless`.
-
 ### Render
-The app was also deployed on Render. However, Render's free tier uses ephemeral server instances that shut down after some time of inactivity. Whilst that is fine in principle, 
-it takes anywhere between 15-30 seconds for the instance to spin up again, leading to rather long wait times. That was the main reason for looking into serverless architecture.
+The app is deployed on [Render](https://proload.onrender.com). The client is also hosted on [Render](https://proload.sigmagamma.app).
+
+### AWS / Serverless
+The app was deployed via Serverless on AWS Lambda/Gateway under the URL https://ck7k22n5j9.execute-api.us-east-1.amazonaws.com/prod/.
+Deployment is actioned via the npm script `npm run deploy:serverless`. This deployment strategy was shelved after AWS credits expired.
 
 ## Links to Related Repositories
 The front-end repo can be found on [GitHub](https://github.com/sven-gerlach/workout-tracker-client).
